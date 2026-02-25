@@ -1,0 +1,17 @@
+---
+title: "Methodology & Transparency"
+format: html
+---
+
+## Principles
+- Explicit parameters for every step
+- Logged provenance (seed, sessionInfo, checksums)
+- Reproducible outputs
+
+## Planned pipeline
+1. Read corpus (UCI + etoiles)
+2. Clean + tokenize
+3. Segment into UCE
+4. Lemmatize (lexique)
+5. Build matrices/tables
+6. Run analyses + export artifacts

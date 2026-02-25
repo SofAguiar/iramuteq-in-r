@@ -1,0 +1,26 @@
+# Example configuration (planned)
+input:
+  corpus_file: "path/to/corpus.txt"
+  encoding: "UTF-8"
+  ucimark: "****"   # or "int" alternative mode
+preprocess:
+  lowercase: true
+  remove_numbers: false
+  remove_punct: true
+segmentation:
+  method: "char"    # "char" | "token"
+  uce_size: 40
+  douce: true
+lexique:
+  language: "fr"    # fr | pt | en | ...
+  file: null        # optional path to lexique_*.txt
+analysis:
+  stats: true
+  specificities_ca: true
+  labbe_distance: true
+  reinert_chd: true
+  similitude: true
+  wordcloud: true
+output:
+  dir: "outputs/run1"
+  seed: 123

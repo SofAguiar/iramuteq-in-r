@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
+outputs/
+renv/library/
+renv/python/
+renv/staging/
+*.tar.gz
+*.Rcheck/

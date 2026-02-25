@@ -1,40 +1,120 @@
-# Attencion! This is a WIP
+
+# Attention! This is a WIP
 # IRAMUTEQ in R 
 
-[![R-v4.0+](https://img.shields.io/badge/R-v4.0+-blue.svg)](https://www.r-project.org/)
-[![License: GPL-v3](https://img.shields.io/badge/License-GPL--v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# iramuteq-in-r
 
-This repository provides a **programmatic reproduction** of the analyses performed by the IRAMUTEQ software (version 0.8 Alpha 7) directly within the R environment. The goal is to bypass the Graphical User Interface (GUI), allowing for greater methodological transparency, parameter customization, and workflow automation for textual data analysis.
 
-## Motivation and Key Advantages
+**iramuteq-in-r** is a repository for reverse-engineering and reimplementing the **IRaMuTeQ** methodological workflow in **R** (R-only), with a strong focus on:
 
-While IRAMUTEQ is a powerful interface, executing it via R scripts offers:
-* **Transparency:** Direct inspection of classification algorithms and dimensionality reduction techniques.
-* **Reproducibility:** Easily replicate analyses across different datasets without manual clicks.
-* **Customization:** Freedom to adjust plot themes, lemmatization rules, and frequency thresholds that are restricted in the GUI.
-* **Integration:** Connect results directly with modern NLP and visualization packages (e.g., ggplot2, tidytext).
+- **Explicit parameter control** (no hidden GUI defaults)
+- **Methodological transparency** (traceable, auditable pipelines)
+- **Reproducibility** (seed, versions, checksums, and per-run logs)
 
-## Implemented Analyses
-This project aims to cover the core functionalities of IRAMUTEQ:
-- [ ] **Textual Statistics:** Word frequency, active and supplementary forms.
-- [ ] **Word Clouds:** Advanced aesthetic customization.
-- [ ] **Similarity Analysis:** Based on graph theory.
-- [ ] **DHC (Reinert Method):** Descending Hierarchical Classification and cluster analysis.
-- [ ] **Correspondence Analysis (CA):** Factorial visualization of classes and segments.
+> Status: bootstrap structure created on 2026-02-26. Functions under `R/` are currently **stubs** and will be implemented iteratively.
 
-## Source and Credits
+---
 
-This project utilizes and adapts the computational routines originally developed by **Pierre Ratinaud**, 
-the author of the IRAMUTEQ software.
+## Goal
 
-* **Original Author:** Pierre Ratinaud (Laboratoire LERASS).
-* **Copyright:** (c) 2008-2011 Pierre Ratinaud.
-* **Original License:** GNU/GPL.
-* **Source Repository:** [GitLab Huma-Num - IRAMUTEQ Rscripts](https://gitlab.huma-num.fr/pratinaud/iramuteq/-/tree/master/Rscripts)
+Provide a pipeline that can ingest an IRaMuTeQ-style corpus (UCI/UCE + `****` separators and `*etoile` variables) and perform:
 
-### Why this adaptation?
-Although IRAMUTEQ is a well-established tool, using its scripts directly in R enables:
-1. **Methodological Transparency:** Inspection of every step in the statistical processing.
-2. **Modernization:** Compatibility adjustments for recent R versions (4.0+) and visualization packages.
-3. **Customization:** Modification of lemmatization parameters and dictionaries that are rigid within the GUI.
+1. **Corpus reading and parsing**
+2. **Cleaning and tokenization**
+3. **UCE segmentation** (character- or token-based, with optional “soft” splitting)
+4. **Lemmatization via IRaMuTeQ lexique** (compatible with `lexique_*.txt` when supplied)
+5. **Sparse matrices and lexical tables** (UCE×terms; groups×terms)
+6. **Analyses**:
+   - Corpus statistics (freq, hapax, active/supplementary forms)
+   - Specificities + CA (Correspondence Analysis)
+   - **Labbé** intertextual distance
+   - **Reinert/CHD** classification
+   - **Similitude** (graph)
+   - **Word cloud**
+7. **Transparent exports** (CSV/GraphML/PNG/SVG + Quarto/RMarkdown report)
 
+---
+
+## What this repo is NOT
+
+- Not a GUI.
+- It does not claim immediate 1:1 replication of IRaMuTeQ outputs — the target is **compatibility + traceability**, validated with test corpora.
+- It does not automatically redistribute IRaMuTeQ dictionaries/resources if licensing restricts it.
+  (When needed, users provide local paths via configuration.)
+
+---
+
+## Repository structure
+
+- `R/` — pipeline steps and analyses (pure functions + explicit parameters)
+- `inst/extdata/config.example.yml` — run configuration example
+- `scripts/cli.R` — CLI entrypoint (planned)
+- `tests/` — `testthat` tests (validation and regression)
+- `vignettes/` — methodological documentation (Quarto/RMarkdown)
+- `.github/workflows/` — CI with `R CMD check`
+
+---
+
+## Installation (development)
+
+```r
+# From the project root
+install.packages("remotes")
+remotes::install_local(".")
+```
+
+> R package name (DESCRIPTION): **iramuteqinr**  
+> Git repository name: **iramuteq-in-r**
+
+---
+
+## Running (planned)
+
+Runs will be driven by a YAML configuration file to guarantee traceability:
+
+- Example: `inst/extdata/config.example.yml`
+
+Planned CLI usage:
+
+```bash
+Rscript scripts/cli.R --config path/to/config.yml
+```
+
+---
+
+## Transparency & reproducibility principles
+
+Each run should produce:
+
+- `params.json` / `params.yml` (effective parameters)
+- `sessionInfo()` (R and package versions)
+- `seed` and RNG state (when applicable)
+- **checksums** of input files
+- intermediate artifacts (e.g., segmented UCEs, sparse matrices, lexical tables)
+- final artifacts (CSVs, plots, graphs) + a report
+
+---
+
+## Short roadmap
+
+1. Implement `read_corpus_iramuteq()` (`****` parsing + `*etoile` variables)
+2. Implement UCE segmentation (char/token + `douce` behavior)
+3. Port lexique/lemmatization (compatible with `lexique_*.txt`)
+4. Build sparse matrices and lexical tables
+5. Implement analyses (stats → specificities/CA → Labbé → Reinert → similitude → wordcloud)
+6. Pipeline runner + CLI + Quarto report
+
+---
+
+## Contributing
+
+- Issues and PRs are welcome.
+- Priority: **document parameters**, **record methodological decisions**, and **add tests** that compare against IRaMuTeQ outputs.
+
+---
+
+## References (context)
+
+- IRaMuTeQ (original project): see Pierre Ratinaud's repository.
+- Reinert/CHD implementations in R (optional backend): `rainette`.
+- Hypergeometric specificities: `textometry` (where applicable).
