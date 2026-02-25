@@ -1,33 +1,39 @@
-# IRAMUTEQ in R
+# IRAMUTEQ in R 
 
 [![R-v4.0+](https://img.shields.io/badge/R-v4.0+-blue.svg)](https://www.r-project.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL-v3](https://img.shields.io/badge/License-GPL--v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Este repositório oferece a **reprodução programática** das análises realizadas pelo software IRAMUTEQ (versão 0.8 Alpha 7) diretamente em ambiente R. O objetivo é remover a interface gráfica (GUI), permitindo maior transparência metodológica, customização de parâmetros estatísticos e automação de fluxos de trabalho para análise de dados textuais.
+This repository provides a **programmatic reproduction** of the analyses performed by the IRAMUTEQ software (version 0.8 Alpha 7) directly within the R environment. The goal is to bypass the Graphical User Interface (GUI), allowing for greater methodological transparency, parameter customization, and workflow automation for textual data analysis.
 
-## Motivação e Diferenciais
+## Motivation and Key Advantages
 
-O IRAMUTEQ é uma interface poderosa, mas a execução via script R oferece:
-* **Transparência:** Inspeção direta dos algoritmos de classificação e redução de dimensionalidade.
-* **Reprodutibilidade:** Facilidade em replicar análises em diferentes conjuntos de dados sem cliques manuais.
-* **Customização:** Liberdade para ajustar temas de gráficos, lematizações e limiares de frequência que a GUI limita.
-* **Integração:** Conecte os resultados diretamente com outros pacotes modernos de NLP e visualização (ggplot2, tidytext).
+While IRAMUTEQ is a powerful interface, executing it via R scripts offers:
+* **Transparency:** Direct inspection of classification algorithms and dimensionality reduction techniques.
+* **Reproducibility:** Easily replicate analyses across different datasets without manual clicks.
+* **Customization:** Freedom to adjust plot themes, lemmatization rules, and frequency thresholds that are restricted in the GUI.
+* **Integration:** Connect results directly with modern NLP and visualization packages (e.g., ggplot2, tidytext).
 
-## Análises Implementadas
-O projeto busca cobrir as principais funcionalidades do IRAMUTEQ:
-- [ ] **Estatísticas Textuais:** Frequência, formas ativas e suplementares.
-- [ ] **Nuvem de Palavras:** Customização estética avançada.
-- [ ] **Análise de Similitude:** Baseada na teoria dos grafos.
-- [ ] **CHD (Método Reinert):** Classificação Hierárquica Descendente e análise de clusters.
-- [ ] **Análise de Correspondência (AFC):** Visualização fatorial de classes e segmentos.
+##️ Implemented Analyses
+This project aims to cover the core functionalities of IRAMUTEQ:
+- [ ] **Textual Statistics:** Word frequency, active and supplementary forms.
+- [ ] **Word Clouds:** Advanced aesthetic customization.
+- [ ] **Similarity Analysis:** Based on graph theory.
+- [ ] **DHC (Reinert Method):** Descending Hierarchical Classification and cluster analysis.
+- [ ] **Correspondence Analysis (CA):** Factorial visualization of classes and segments.
 
-## Fonte dos Scripts
-Os códigos contidos aqui são adaptações e melhorias baseadas nos scripts originais de **Pierre Ratinaud**, disponíveis no repositório oficial:
-🔗 [GitLab Huma-Num - IRAMUTEQ Rscripts](https://gitlab.huma-num.fr/pratinaud/iramuteq/-/tree/master/Rscripts)
+## Source and Credits
 
-## Como Começar (Work in Progress)
+This project utilizes and adapts the computational routines originally developed by **Pierre Ratinaud**, 
+the author of the IRAMUTEQ software.
 
-1. **Pré-requisitos:**
-   Certifique-se de ter o R instalado e as dependências necessárias:
-   ```R
-   install.packages(c("tm", "igraph", "wordcloud", "proxy", "cluster"))
+* **Original Author:** Pierre Ratinaud (Laboratoire LERASS).
+* **Copyright:** (c) 2008-2011 Pierre Ratinaud.
+* **Original License:** GNU/GPL.
+* **Source Repository:** [GitLab Huma-Num - IRAMUTEQ Rscripts](https://gitlab.huma-num.fr/pratinaud/iramuteq/-/tree/master/Rscripts)
+
+### Why this adaptation?
+Although IRAMUTEQ is a well-established tool, using its scripts directly in R enables:
+1. **Methodological Transparency:** Inspection of every step in the statistical processing.
+2. **Modernization:** Compatibility adjustments for recent R versions (4.0+) and visualization packages.
+3. **Customization:** Modification of lemmatization parameters and dictionaries that are rigid within the GUI.
+
