@@ -13,7 +13,7 @@ While IRAMUTEQ is a powerful interface, executing it via R scripts offers:
 * **Customization:** Freedom to adjust plot themes, lemmatization rules, and frequency thresholds that are restricted in the GUI.
 * **Integration:** Connect results directly with modern NLP and visualization packages (e.g., ggplot2, tidytext).
 
-##️ Implemented Analyses
+## Implemented Analyses
 This project aims to cover the core functionalities of IRAMUTEQ:
 - [ ] **Textual Statistics:** Word frequency, active and supplementary forms.
 - [ ] **Word Clouds:** Advanced aesthetic customization.
