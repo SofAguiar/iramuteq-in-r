@@ -1,0 +1,7 @@
+**** *id=001 *gender=F *group_A
+This is the first document.
+It has two lines.
+
+**** *id=002 *gender=M *group_B
+This is the second document.
+It also has two lines.
