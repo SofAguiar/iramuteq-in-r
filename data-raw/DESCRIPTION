@@ -1,0 +1,31 @@
+Package: iramuteqinr
+Title: Reverse-engineered, Transparent IRaMuTeQ-style Textometry Pipeline (R-only)
+Version: 0.0.1
+Authors@R: c(
+  person("Pedro", "Nunes", role = c("aut", "cre"),
+         email = "you@example.com")
+)
+Description: R-only implementation intended for methodological transparency and
+    parameter control, inspired by IRaMuTeQ workflows (reading corpus, segmentation,
+    lemmatization via lexique, lexical tables, statistics, specificities + CA,
+    Labbé distance, Reinert/CHD classification, similarity analysis, and wordcloud).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    Matrix,
+    data.table,
+    dplyr,
+    stringi,
+    readr,
+    tibble,
+    ggplot2,
+    igraph
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    quarto,
+    covr
+Config/testthat/edition: 3
