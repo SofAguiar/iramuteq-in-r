@@ -2,9 +2,9 @@ Package: iramuteqinr
 Title: Reverse-engineered, Transparent IRaMuTeQ-style Textometry Pipeline (R-only)
 Version: 0.0.1
 Authors@R: c(
-  person("Sof", "M. Aguiar", role = c("aut", "cre"),
-         email = "sof.m.aguiar@gmail.com")
-)
+    person("Sofia", "Aguiar", role = c("aut", "cre"),
+           email = "you@example.com")
+  )
 Description: R-only implementation intended for methodological transparency and
     parameter control, inspired by IRaMuTeQ workflows (reading corpus, segmentation,
     lemmatization via lexique, lexical tables, statistics, specificities + CA,
